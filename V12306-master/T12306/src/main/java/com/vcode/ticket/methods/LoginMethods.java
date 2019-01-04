@@ -318,7 +318,8 @@ public class LoginMethods<T> {
 		String body1 = VHttpUtils.outHtml(res1.getBody());		//将网页内容转为文本
 		JSONObject json1 = new JSONObject(body1);
 		Log.info(json1.get("username")+"===="+json1.get("result_message"));
-
+		HomePage<T> window = (HomePage<T>) ApplicationContextFactory.getBean(HomePage.class);
+		window.printLog("登录成功,姓名"+json1.get("username"));
 		res1.getEntity().disconnect();
 		
 	}

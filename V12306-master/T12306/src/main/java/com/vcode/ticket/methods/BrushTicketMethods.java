@@ -76,8 +76,9 @@ public class BrushTicketMethods extends Thread{
 	private boolean disposeTicketInfo(String body,int[] seatOther) throws JSONException {
 		Log.info(body);
 		//证明是错误页面
-		if(body.indexOf("{")==-1) {
-			
+		if(body.indexOf("{")!=0) {
+			home_page.printLog("查询列车列表失败");
+			return false;
 		}
 		boolean Brush = true;
 		JSONObject json = new JSONObject(body);
@@ -85,17 +86,6 @@ public class BrushTicketMethods extends Thread{
 		String result = new JSONObject(json.get("data").toString()).get("result").toString();
 		String rsMap = new JSONObject(json.get("data").toString()).get("map").toString();
 		JSONObject jsMap = new JSONObject(rsMap);
-		/*home_page.trainTable.setModel(new DefaultTableModel(new Object[][] {}, new String[] {
-				"\u8F66\u6B21", "\u51FA\u53D1\u5730", "\u76EE\u7684\u5730",
-				"\u5386\u65F6", "\u53D1\u8F66\u65F6\u95F4",
-				"\u5230\u8FBE\u65F6\u95F4", "\u5546\u52A1", "\u7279\u7B49",
-				"\u4E00\u7B49", "\u4E8C\u7B49", "\u9AD8\u8F6F", "\u8F6F\u5367",
-				"\u786C\u5367", "\u8F6F\u5EA7", "\u786C\u5EA7", "\u65E0\u5EA7",
-				"\u5176\u5B83", "\u5907\u6CE8" }) {
-			public boolean isCellEditable(int row, int column) {
-				return false;
-			}
-		});*/
 		home_page.trainTable.setModel(new DefaultTableModel(new Object[][] {}, new String[] {
 				"车次", "出发地", "目的地",
 				"历时", "发车时间",
