@@ -5,6 +5,9 @@ import java.awt.Component;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpCookie;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 
 import javax.swing.ImageIcon;
@@ -321,6 +324,9 @@ public class LoginMethods<T> {
 		HomePage<T> window = (HomePage<T>) ApplicationContextFactory.getBean(HomePage.class);
 		window.printLog("登录成功,姓名"+json1.get("username"));
 		res1.getEntity().disconnect();
+		List<HttpCookie> cookies = res.getCookies();
+		List<HttpCookie> cookies1 = res1.getCookies();
+		System.out.println(cookies);
 		
 	}
 

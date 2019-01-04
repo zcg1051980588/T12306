@@ -61,8 +61,12 @@ public class BrushTicketMethods extends Thread{
 		// 开始刷票
 		VHttpGet get = new VHttpGet(
 				"https://kyfw.12306.cn/otn/leftTicket/queryZ?" + home_page.sb);
+		//VHttpGet get = new VHttpGet("https://kyfw.12306.cn/otn/leftTicket/queryZ?leftTicketDTO.train_date=2018-01-05&leftTicketDTO.from_station=HGH&leftTicketDTO.to_station=CQW&purpose_codes=ADULT");
+		
+
 		VHttpResponse res = VBrowser.execute(get);
 		String body = VHttpUtils.outHtml(res.getBody());
+
 		try {
 			disposeTicketInfo(body,home_page.seatOthers);
 		} catch (JSONException e) {

@@ -3,6 +3,7 @@ package com.vcode.ticket.event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.vcode.ticket.brushVotesEventImpl.PassengerBtEvent;
 import com.vcode.ticket.brushVotesEventImpl.SeatBtEvent;
 import com.vcode.ticket.homeEventImpl.AllSeatTypeEvent;
 import com.vcode.ticket.homeEventImpl.AllTrainTypeEvent;
@@ -52,6 +53,8 @@ public class HomeEvent<T> {
 	
 	@Autowired
 	private SeatBtEvent<T> seatBtEvent;
+	@Autowired
+	private PassengerBtEvent<T> passengerBtEvent;
 	
 
 	public void addEvents(){
@@ -95,6 +98,9 @@ public class HomeEvent<T> {
 		
 		//席别的点击事件
 		Page.seatBt.addMouseListener(seatBtEvent);
+		//乘车人的点击事件
+		Page.passengerBt.addMouseListener(passengerBtEvent);
+		
 		
 		//刷票模式事件
 		Page.trainModel.addMouseListener(trainModelEvent);

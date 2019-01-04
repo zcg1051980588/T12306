@@ -956,7 +956,7 @@ public class HomePage<T> {
 	 * 
 	 * @return
 	 */
-	private DefaultListModel<Object> getPassengerDTOs() {
+	public DefaultListModel<Object> getPassengerDTOs() {
 		DefaultListModel<Object> model_Seats = new DefaultListModel<Object>();
 		VHttpPost post = new VHttpPost("https://kyfw.12306.cn/otn/confirmPassenger/getPassengerDTOs");
 		VHttpResponse res = VBrowser.execute(post);
